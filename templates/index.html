@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager - RDBMS Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>📋 Task Manager</h1>
+                <p>Demonstrating CRUD operations with Simple RDBMS</p>
+            </div>
+            <div class="tech-badge">
+                <span>🗄️ Custom RDBMS</span>
+                <span>🐍 Python</span>
+                <span>🌐 Flask</span>
+            </div>
+        </header>
+
+        <!-- Statistics Dashboard -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-info">
+                    <div class="stat-number">{{ stats.total_tasks }}</div>
+                    <div class="stat-label">Total Tasks</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-info">
+                    <div class="stat-number">{{ stats.completed_tasks }}</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-info">
+                    <div class="stat-number">{{ stats.total_users }}</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-info">
+                    <div class="stat-number">{{ stats.pending_tasks }}</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert Messages -->
+        {% if message %}
+        <div class="alert alert-{{ message_type }}">
+            <span class="alert-icon">{% if message_type == 'success' %}✓{% else %}✗{% endif %}</span>
+            <span>{{ message }}</span>
+        </div>
+        {% endif %}
+
+        <!-- Two Column Layout -->
+        <div class="two-column">
+            <!-- Left Column: Users -->
+            <div class="column">
+                <section class="section">
+                    <h2>➕ Create User</h2>
+                    <form method="POST" action="/users/create" class="form">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" name="username" required placeholder="Enter username">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" required placeholder="user@example.com">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create User</button>
+                    </form>
+                </section>
+
+                <section class="section">
+                    <h2>👥 Users ({{ stats.total_users }})</h2>
+                    <div class="user-list">
+                        {% if users %}
+                            {% for user in users %}
+                            <div class="user-card">
+                                <div class="user-info">
+                                    <div class="user-name">{{ user.username }}</div>
+                                    <div class="user-email">{{ user.email }}</div>
+                                    <div class="user-meta">ID: {{ user.id }} • Joined: {{ user.created_at[:10] }}</div>
+                                </div>
+                                <form method="POST" action="/users/{{ user.id }}/delete" class="inline-form">
+                                    <button type="submit" class="btn btn-danger btn-sm" 
+                                            onclick="return confirm('Delete user and all their tasks?')">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="empty-state">No users yet. Create one to get started!</p>
+                        {% endif %}
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column: Tasks -->
+            <div class="column">
+                <section class="section">
+                    <h2>➕ Create Task</h2>
+                    <form method="POST" action="/tasks/create" class="form">
+                        <div class="form-group">
+                            <label>Assign to User</label>
+                            <select name="user_id" required>
+                                <option value="">Select User</option>
+                                {% for user in users %}
+                                <option value="{{ user.id }}">{{ user.username }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Task Title</label>
+                            <input type="text" name="title" required placeholder="Enter task title">
+                        </div>
+                        <div class="form-group">
+                            <label>Description (optional)</label>
+                            <textarea name="description" rows="3" placeholder="Task details..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Priority</label>
+                            <select name="priority" required>
+                                <option value="1">🟢 Low</option>
+                                <option value="2" selected>🟡 Medium</option>
+                                <option value="3">🔴 High</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Task</button>
+                    </form>
+                </section>
+
+                <section class="section">
+                    <h2>📝 Tasks ({{ stats.total_tasks }})</h2>
+                    <div class="task-list">
+                        {% if tasks %}
+                            {% for task in tasks %}
+                            <div class="task-card">
+                                <div class="task-header">
+                                    <div class="task-title-row">
+                                        <span class="task-title">{{ task.title }}</span>
+                                        <span class="priority-badge priority-{{ task.priority }}">
+                                            {% if task.priority == 1 %}🟢 Low
+                                            {% elif task.priority == 2 %}🟡 Medium
+                                            {% else %}🔴 High{% endif %}
+                                        </span>
+                                    </div>
+                                    <span class="status-badge status-{{ task.status }}">
+                                        {{ task.status.replace('_', ' ').title() }}
+                                    </span>
+                                </div>
+                                
+                                {% if task.description %}
+                                <div class="task-description">{{ task.description }}</div>
+                                {% endif %}
+                                
+                                <div class="task-meta">
+                                    <span>User ID: {{ task.user_id }}</span>
+                                    <span>Created: {{ task.created_at[:16] }}</span>
+                                </div>
+                                
+                                <div class="task-actions">
+                                    {% if task.status == 'pending' %}
+                                    <form method="POST" action="/tasks/{{ task.id }}/update" class="inline-form">
+                                        <input type="hidden" name="status" value="in_progress">
+                                        <button type="submit" class="btn btn-primary btn-sm">▶ Start</button>
+                                    </form>
+                                    {% elif task.status == 'in_progress' %}
+                                    <form method="POST" action="/tasks/{{ task.id }}/update" class="inline-form">
+                                        <input type="hidden" name="status" value="completed">
+                                        <button type="submit" class="btn btn-success btn-sm">✓ Complete</button>
+                                    </form>
+                                    {% endif %}
+                                    
+                                    <form method="POST" action="/tasks/{{ task.id }}/delete" class="inline-form">
+                                        <button type="submit" class="btn btn-danger btn-sm" 
+                                                onclick="return confirm('Delete this task?')">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="empty-state">No tasks yet. Create one to get started!</p>
+                        {% endif %}
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Built with Simple RDBMS • Custom Database Engine in Python</p>
+            <p>Features: CRUD Operations, Indexing, Primary/Unique Keys, SQL Parser</p>
+        </footer>
+    </div>
+</body>
+</html>

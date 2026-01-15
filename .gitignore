@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+db_data/
+task_manager_db/
+test_db/
+.env
