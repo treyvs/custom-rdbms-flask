@@ -1,0 +1,27 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "Task Manager - Full Stack Application with React Native Mobile App and Python RDBMS Backend",
+  "main": "app.py",
+  "scripts": {
+    "start": "python app.py",
+    "build": "echo 'Build complete' && npm --version",
+    "test": "python test.py",
+    "dev": "python app.py"
+  },
+  "keywords": [
+    "task-manager",
+    "rdbms",
+    "react-native",
+    "flask",
+    "mobile"
+  ],
+  "author": "Development Team",
+  "license": "ISC",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
