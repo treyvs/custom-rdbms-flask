@@ -1,0 +1,58 @@
+JAMES TREVOR THARAO
+Nairobi, Kenya | +254793318735 | tj.jamestrevor@gmail.com | GitHub: github.com/treyvs | LinkedIn: linkedin.com/in/trevor-james-00773a270/
+
+PROFESSIONAL SUMMARY
+Computer Science graduate with demonstrated passion for educational technology and digital transformation in Kenyan classrooms. Experienced full-stack developer with proven ability to design accessible digital platforms that enhance learning experiences. Strong background in content management, user interface optimization, and collaborative development. Committed to leveraging technology to bridge traditional teaching and digital education.
+
+EDUCATION
+Bachelor of Science in Informatics and Computer Science | Strathmore University (Ongoing)
+Specializations: Software Development, Cybersecurity, Full-Stack Development
+ALX Software Engineering Program | June 2023
+KCSE Grade A- | Nova Pioneer Tatu Boys High School, 2022
+
+TECHNICAL COMPETENCIES
+Programming & Development: JavaScript, C++, C#, Python, Kotlin, React.js, Node.js, Laravel, PHP
+Database Systems: MySQL, MongoDB, Oracle | DevOps & Server Administration
+Educational Technology: Learning Management Systems, Content Management Platforms, Web Accessibility
+Soft Skills: Team Leadership, Public Speaking, Project Coordination, User-Centered Design
+
+PROFESSIONAL EXPERIENCE
+
+IT Intern | CITAM Schools, Woodley | January 2024 – March 2024
+• Managed school administration system and database, ensuring seamless operational flow for 500+ students
+• Delivered comprehensive computer studies instruction to Grade 7 & 8 students (curriculum design, classroom delivery)
+• Identified and resolved critical system issues in administration platform and website, improving user reliability
+• Provided technical support for 40+ staff and student users, troubleshooting hardware and software problems
+• Key Achievement: Successfully diagnosed and rectified complex database errors, enhancing data integrity by 40%
+
+Full-Stack Developer | Campus Wire Project | August 2024 – December 2024
+• Architected and deployed dynamic web application unifying 500+ campus students through centralized event and activity information system
+• Designed responsive, accessibility-compliant user interface optimized for desktop and mobile learning environments
+• Built RESTful APIs handling real-time event data, menus, and student interactions with zero downtime
+• Optimized database queries, achieving 35%+ improvement in data retrieval speed and system responsiveness
+• Implemented role-based access control for administrators, event organizers, and students, ensuring data security
+• Key Achievement: Engineered end-to-end event management system with responsive design across all platforms
+
+Full-Stack Developer | Grace Garnet Group | January 2025 – Present
+• Deployed and configured responsive corporate website leveraging CI/CD pipelines and automated builds
+• Optimized SEO structure and analytics integration, enhancing digital discoverability
+• Implemented UI/UX improvements based on user feedback, increasing engagement and accessibility
+• Managed domain configuration and continuous performance monitoring, ensuring 99%+ uptime
+• Translated organizational goals into user-friendly interfaces aligned with professional branding standards
+
+HACKATHON & INNOVATION EXPERIENCE
+Active participant in multiple innovation challenges: NRF Hackathon, NASA Space Apps Challenge, PesaLink Fintech Hackathon
+Demonstrated expertise in rapid prototyping, problem-solving, and collaborative technology development under pressure
+
+EXTRACURRICULAR INVOLVEMENT
+Active Member: Strathmore Computing and Engineering Students Association | Debate Club | Cybersecurity Club | Mental Health Research Team
+Recipient of Public Speaking and Athletic Awards | Podcast Contributor ("How You Doing" Series)
+Proficiency in ethical hacking, penetration testing, and digital forensics workshops
+
+CERTIFICATIONS & QUALIFICATIONS
+Good Clinical Practice and Ethical Conduct in Research Activities | NIDA Clinical Trials Network
+Basic computer proficiency demonstrated through software development expertise and system administration experience
+
+REFERENCES
+Mr. Henry Mugo | ICT Administrator, CITAM Schools | +254710253108 | hmugo@citam.org
+Sir Henry Muchiri | Academic Director, Strathmore University | +254724261602 | HMuchiri@strathmore.edu
